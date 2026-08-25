@@ -7,10 +7,14 @@ FlowControlled_dp
 FlowControlled_dpSystem
 FlowControlled_m_flow
 PressureCurve
+PowerExact
+PowerSimplified
 PumpCurveConstruction
 PumpCurveDerivatives
 Pump_stratos
 Pump_y_stratos
+Pump_Nrpm_stratos
 SpeedControlled_y
 SpeedControlled_y_linear
+SpeedControlled_Nrpm
 BaseClasses
