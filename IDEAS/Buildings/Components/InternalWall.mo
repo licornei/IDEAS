@@ -13,6 +13,7 @@ model InternalWall "interior opaque wall between two zones"
     q50_zone(v50_surf=0, nDum=4),
     crackOrOperableDoor(
       forceErrorControlOnFlow=false,
+      nCom=if abs(hOpe*sin(inc)) < 0.01 then 1 else 2,
       h_b1=-0.5*hzone_a + 0.75*hVertical + hRelSurfBot_a + hThCor,
       h_a1=-0.5*hzone_b + 0.75*hVertical + hRelSurfBot_b - hThCor,
       h_b2=-0.5*hzone_b + 0.25*hVertical + hRelSurfBot_b - hThCor,
