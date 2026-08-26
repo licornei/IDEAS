@@ -20,8 +20,8 @@ model CrackOrOperableDoor
  parameter Modelica.Units.SI.Length wOpe=0.9 "Width of opening"   annotation (Dialog(group="Open door",enable=useDoor));
  parameter Modelica.Units.SI.Length hOpe=2.1 "Height of opening" annotation (Dialog(group="Open door",enable=useDoor));
  parameter Integer nCom=if abs(hOpe*sin(inc)) < 0.01 then 1 else max(2,integer(abs(hOpe*sin(inc))/4))
- "Number of compartments for the discretization"
-  annotation (Dialog(group="Open door"));
+	"Number of compartments for the discretization"
+		annotation (Dialog(group="Open door",enable=useDoor));
 
  parameter Modelica.Units.SI.Length h_b1=0
 	"Height of crack at port b1 (hasCavity=false), center of conected zone is 0" 
