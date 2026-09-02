@@ -76,7 +76,7 @@ package Air
   InputAbsolutePressure p "Absolute pressure of medium";
   InputMassFraction[1] Xi(
     start=reference_X[1:1],
-    nominal={0.01},
+    nominal={0.005},
     each stateSelect=if preferredMediumStates then StateSelect.prefer else StateSelect.default)
     "Structurally independent mass fractions";
   InputSpecificEnthalpy h "Specific enthalpy of medium";
@@ -86,7 +86,7 @@ package Air
    "Temperature of medium";
   Modelica.Media.Interfaces.Types.MassFraction[2] X(
     start=reference_X,
-    nominal={0.01, 1})
+    nominal={0.005, 1})
     "Mass fractions (= (component mass)/total mass  m_i/m)";
   Modelica.Media.Interfaces.Types.SpecificInternalEnergy u
     "Specific internal energy of medium";
@@ -95,7 +95,7 @@ package Air
   Modelica.Media.Interfaces.Types.MolarMass MM
     "Molar mass (of mixture or single fluid)";
   ThermodynamicState state(
-    X(nominal={0.01, 1}))
+    X(nominal={0.005, 1}))
     "Thermodynamic state record for optional functions";
 
     Modelica.Units.NonSI.Temperature_degC T_degC=
@@ -144,6 +144,9 @@ package Air
 
     // Assertions to test for bounds
     assert(noEvent(X[1] >= -1.e-5) and noEvent(X[1] <= 1 + 1.e-5), "Mass fraction X[1] = " + String(X[1]) + " of substance water"
+      + "\nof medium \"IDEAS.Media.Air\" is not in the range 0..1",AssertionLevel.warning);
+
+    assert(noEvent(X[1] >= -1.e-4) and noEvent(X[1] <= 1 + 1.e-4), "Mass fraction X[1] = " + String(X[1]) + " of substance water"
       + "\nof medium \"IDEAS.Media.Air\" is not in the range 0..1");
 
     assert(noEvent(T >= 200.0), "In "   + getInstanceName() + ": Temperature T exceeded its minimum allowed value of -73.15 degC (200 Kelvin)

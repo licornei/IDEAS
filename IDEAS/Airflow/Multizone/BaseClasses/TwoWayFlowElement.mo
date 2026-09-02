@@ -18,6 +18,7 @@ partial model TwoWayFlowElement "Flow resistance that uses the power law"
 
   parameter Modelica.Units.SI.Velocity vZer=0.001
     "Minimum velocity to prevent zero flow. Recommended: 0.001";
+  parameter Real errorscaling=1;
 
   Modelica.Units.SI.VolumeFlowRate VAB_flow(nominal=0.001)
     "Volume flow rate from A to B if positive";
@@ -55,8 +56,8 @@ equation
   // gives higher robustness. The reason may be that for bi-directional flow,
   // (VAB_flow - VBA_flow) may be close to zero.
   if forceErrorControlOnFlow then
-    der(mExcAB) = port_a1.m_flow;
-    der(mExcBA) = port_a2.m_flow;
+    der(mExcAB) = errorscaling*port_a1.m_flow;
+    der(mExcBA) = errorscaling*port_a2.m_flow;
   else
     der(mExcAB) = 0;
     der(mExcBA) = 0;

@@ -11,7 +11,7 @@ model InternalWall "interior opaque wall between two zones"
            then 0 else sum(port_emb.Q_flow))),
 	final QTra_design(fixed=false),
     q50_zone(v50_surf=0, nDum=4),
-    crackOrOperableDoor(
+    redeclare Airflow.Multizone.CrackOrOperableFixedDoor crackOrOperableDoor(
       forceErrorControlOnFlow=false,
       h_b1=-0.5*hzone_a + 0.75*hVertical + hRelSurfBot_a + hThCor,
       h_a1=-0.5*hzone_b + 0.75*hVertical + hRelSurfBot_b - hThCor,

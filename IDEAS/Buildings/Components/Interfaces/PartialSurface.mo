@@ -102,6 +102,7 @@ partial model PartialSurface "Partial model for building envelope component"
     v50_surf=q50_internal*A,
     use_custom_q50=use_custom_q50)
     annotation (Placement(transformation(extent={{80,-60},{100,-40}})));
+  replaceable
   IDEAS.Airflow.Multizone.CrackOrOperableDoor crackOrOperableDoor(
     A_q50 = A,
     q50=q50_internal,

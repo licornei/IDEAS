@@ -37,7 +37,8 @@ model Window "Multipane window"
       hA=0.5*hVertical,
       hB=0.5*hzone_a - hRelSurfBot_a,
       useDoor = use_operable_window,
-      use_y=use_operable_window));
+      use_y=use_operable_window,
+      errorscaling=0.05)        );
   parameter Modelica.Units.SI.Length hWin(min=0.1) = max(0.1,sqrt(A))
     "Window height, including frame"
     annotation ();
